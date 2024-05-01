@@ -49,27 +49,29 @@ const CoinList = () => {
   };
 
   return (
-    <div className="bg-slate-400 pb-32">
+    <div className="bg-indigo-500 pb-32">
       <div className="px-4 py-6 sm:px-6">
         <h3 className="text-base font-semibold leading-7">Crypto Coins</h3>
-        <div className="grid border h-32 gap-4 mt-4">
-          <div>
-            <label className="text-sm font-medium">
+        <div className="grid grid-cols-2 gap-4 mt-4">
+          <div className="flex flex-col">
+            <label htmlFor="marketCap" className="text-sm font-medium">
               Market Cap (less than):
             </label>
             <input
-              className="text-sm font-medium text-gray-900"
+              id="marketCap"
+              className="text-sm font-medium text-gray-900 bg-white border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
               type="number"
               value={filters.marketCap}
               onChange={(e) => handleFilterChange("marketCap", e.target.value)}
             />
           </div>
-          <div>
-            <label className="text-sm font-medium">
+          <div className="flex flex-col">
+            <label htmlFor="volume" className="text-sm font-medium">
               Volume (greater than):
             </label>
             <input
-              className="text-sm font-medium text-gray-900"
+              id="volume"
+              className="text-sm font-medium text-gray-900 bg-white border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
               type="number"
               value={filters.volume}
               onChange={(e) => handleFilterChange("volume", e.target.value)}
@@ -86,29 +88,29 @@ const CoinList = () => {
                 className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
               >
                 <dt className="text-sm font-medium text-gray-900">Name</dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                <dd className="mt-1 text-sm leading-6 text-gray-900 sm:col-span-2 sm:mt-0">
                   {coin.name}
                 </dd>
                 <dt className="text-sm font-medium text-gray-900">
                   Market Cap
                 </dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                <dd className="mt-1 text-sm leading-6 text-gray-900 sm:col-span-2 sm:mt-0">
                   {coin.quote.USD.market_cap.toLocaleString()}
                 </dd>
                 <dt className="text-sm font-medium text-gray-900">
                   Volume 24h
                 </dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                <dd className="mt-1 text-sm leading-6 text-gray-900 sm:col-span-2 sm:mt-0">
                   {coin.quote.USD.volume_24h.toLocaleString()}
                 </dd>
                 <dt className="text-sm font-medium text-gray-900">
                   Circulating Supply
                 </dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                <dd className="mt-1 text-sm leading-6 text-gray-900 sm:col-span-2 sm:mt-0">
                   {coin.circulating_supply.toLocaleString()}
                 </dd>
                 <dt className="text-sm font-medium text-gray-900">Ranking</dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                <dd className="mt-1 text-sm leading-6 text-gray-900 sm:col-span-2 sm:mt-0">
                   {coin.cmc_rank}
                 </dd>
               </li>
