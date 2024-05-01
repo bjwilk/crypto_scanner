@@ -8,6 +8,7 @@ const CoinList = () => {
   const [filters, setFilters] = useState({
     marketCap: 1000000000, // 1 billion
     volume: 100000000, // 100 million
+    circulatingSupply: 1000000000 // 1 billion
   });
 
   // Fetch data from the proxy server endpoint
@@ -34,7 +35,8 @@ const CoinList = () => {
     const filtered = coins.filter((coin) => {
       return (
         coin.quote.USD.market_cap < filters.marketCap &&
-        coin.quote.USD.volume_24h > filters.volume
+        coin.quote.USD.volume_24h > filters.volume &&
+        coin.circulating_supply < filters.circulatingSupply
       );
     });
     setFilteredCoins(filtered);
@@ -77,6 +79,18 @@ const CoinList = () => {
               onChange={(e) => handleFilterChange("volume", e.target.value)}
             />
           </div>
+          <div className="flex flex-col">
+            <label htmlFor="marketCap" className="text-sm font-medium">
+              Circulating Supply (less than):
+            </label>
+            <input
+              id="marketCap"
+              className="text-sm font-medium text-gray-900 bg-white border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+              type="number"
+              value={filters.circulatingSupply}
+              onChange={(e) => handleFilterChange("circulatingSupply", e.target.value)}
+            />
+          </div>
         </div>
       </div>
       <div className="border-t border-gray-700">
@@ -108,6 +122,12 @@ const CoinList = () => {
                 </dt>
                 <dd className="mt-1 text-sm leading-6 text-gray-900 sm:col-span-2 sm:mt-0">
                   {coin.circulating_supply.toLocaleString()}
+                </dd>
+                <dt className="text-sm font-medium text-gray-900">
+                  30 Day Percent Change
+                </dt>
+                <dd className="mt-1 text-sm leading-6 text-gray-900 sm:col-span-2 sm:mt-0">
+                  {coin.quote.USD.percent_change_30d.toLocaleString()}
                 </dd>
                 <dt className="text-sm font-medium text-gray-900">Ranking</dt>
                 <dd className="mt-1 text-sm leading-6 text-gray-900 sm:col-span-2 sm:mt-0">
