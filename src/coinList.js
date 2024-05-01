@@ -14,7 +14,7 @@ const CoinList = () => {
   // Fetch data from the proxy server endpoint
   const fetchData = async () => {
     try {
-      const response1 = await axios.get("http://localhost:3001/api/coins");
+      const response1 = await axios.get("http://crypto-scanner.onrender.com//api/coins");
 
       // Process response1 and response2 as needed
       const data1 = response1.data.data;
